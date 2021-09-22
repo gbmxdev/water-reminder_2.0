@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         int time = Integer.parseInt(message);
         intent.putExtra("time", time);
 
-        notification(intent);
+        //notification(intent);
         startService(intent);
 
     }
