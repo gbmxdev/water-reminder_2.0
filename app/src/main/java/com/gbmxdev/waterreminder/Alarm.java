@@ -30,20 +30,19 @@ public class Alarm extends BroadcastReceiver {
         @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
         wl.acquire();
 
-
-
-        // Put here YOUR code.
-        Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show(); // For example
+        Toast.makeText(context, "Please drink a glass of water!", Toast.LENGTH_LONG).show();
         notification(intent, context);
 
         wl.release();
     }
 
-    public void setAlarm(Context context) {
+    public void setAlarm(Context context, Intent intent) {
+        int condition=intent.getIntExtra("time",  1000 * 60 * 10);//default timer is 10 mins
+
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(context, Alarm.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 60 * 1, pi); // Millisec * Second * Minute CHANGED TO ONE MINUTE FOR TESTING
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), condition, pi); //
     }
 
     public void cancelAlarm(Context context) {

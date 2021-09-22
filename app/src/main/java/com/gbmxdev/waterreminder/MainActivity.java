@@ -37,10 +37,8 @@ import androidx.core.app.NotificationManagerCompat;
 
 /*
 Todo:
-    *get time interval input from plaintext widget
     *call alarm manager with input
     configure alarm manager with time interval
-    call method for notification based on new intent
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -56,40 +54,8 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editTextTime );
         String message = editText.getText().toString();
         int time = Integer.parseInt(message);
-        intent.putExtra("time", time);
-
-        //notification(intent);
+        intent.getIntExtra("time", time);
         startService(intent);
 
-    }
-    public void notification(Intent intent){
-        int condition=intent.getIntExtra("time",0);
-
-            createNotificationChannel();
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Water Reminder")
-                    .setSmallIcon(R.drawable.icon)
-                    .setContentTitle("Water Reminder!")
-                    .setContentText("Please have a glass of water.")
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            // notificationId is a unique int for each notification that you must define
-            notificationManager.notify(1, builder.build());
-
-    }
-    public void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.channel_name);
-            String description = getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("Water Reminder", name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 }
