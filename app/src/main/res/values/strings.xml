@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">water reminder</string>
+    <string name="channel_name">Water Reminder</string>
+    <string name="channel_description">Please drink a glass of water.</string>
+</resources>
