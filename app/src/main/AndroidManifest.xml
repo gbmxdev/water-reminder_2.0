@@ -22,6 +22,8 @@
         </activity>
 
         <receiver android:process=":remote" android:name=".Alarm"></receiver>
+        <service android:name=".YourService" />
+
     </application>
 
 </manifest>
