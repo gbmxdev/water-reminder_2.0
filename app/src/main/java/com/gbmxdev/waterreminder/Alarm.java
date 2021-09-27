@@ -37,8 +37,8 @@ public class Alarm extends BroadcastReceiver {
     }
 
     public void setAlarm(Context context, Intent intent) {
-        int condition=intent.getIntExtra("time",  1000 * 60 * 10);//default timer is 10 mins
-
+        int condition=intent.getIntExtra("time",  10);//default timer is 10 mins
+        condition=condition * 1000 * 60;//convert to milliseconds
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(context, Alarm.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);

@@ -8,13 +8,13 @@
 
     <EditText
         android:id="@+id/editTextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="290dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Time in milliseconds"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Number of minutes between each reminder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
